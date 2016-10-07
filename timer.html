@@ -36,12 +36,16 @@
         cursor: default;
       }
 
-      .timer__moment-piece:after {
-        content: ':';
+      .timer__moment-piece-hours:after {
+        content: 'h';
       }
 
-      .timer__moment-piece:last-child:after {
-        content: '';
+      .timer__moment-piece-minutes:after {
+        content: 'm';
+      }
+
+      .timer__moment-piece-seconds:after {
+        content: 's';
       }
 
       .timer__controls {}
@@ -90,6 +94,7 @@
         var _elMinutes = document.querySelector('.timer__moment-piece-minutes');
         var _elSeconds = document.querySelector('.timer__moment-piece-seconds');
         var _moment = moment().hours(0).minutes(0).seconds(0);
+        var _aux = 0;
 
         var addHour = function() {
           if(_moment.hours() === 23) return;
@@ -102,8 +107,9 @@
           return render(_moment);
         };
 
-        var addSecond = function() {
+        var addSecond = function(ev) {
           _moment = _moment.add(1, 'second');
+          console.log(ev);
           return render(_moment);
         };
 
@@ -141,11 +147,13 @@
 
         document.querySelector('#add-hour').addEventListener('click', addHour, false);
         document.querySelector('#add-minute').addEventListener('click', addMinute, false);
-        document.querySelector('#add-second').addEventListener('click', addSecond, false);
+        document.querySelector('#add-second').addEventListener('mousedown', addSecond(ev), false);
+        // http://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
+        // http://stackoverflow.com/questions/12024483/how-to-pass-parameter-to-function-using-in-addeventlistener
 
         document.querySelector('#subtract-hour').addEventListener('click', subtractHour, false);
         document.querySelector('#subtract-minute').addEventListener('click', subtractMinute, false);
-        document.querySelector('#subtract-second').addEventListener('click', subtractSecond, false);
+        document.querySelector('#subtract-second').addEventListener('mousedown', subtractSecond, false);
         
         document.querySelector('#run-it').addEventListener('click', run, false);
 
