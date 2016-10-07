@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Incrementer</title>
+    <style>
+      [data-inc] {
+          font: 700 30pt/1.5 Impact;
+      }
+    </style>
+  </head>
+  <body>
+    <span data-inc></span>
+    <script>
+      // Increase number snippet
+      function incrementer(value) {
+          var el = document.querySelector('[data-inc]');
+          console.log(el);
+      }
+
+      incrementer(1000);
+    </script>
+  </body>
+</html>
