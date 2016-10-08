@@ -108,9 +108,20 @@
         };
 
         var addSecond = function(ev) {
-          _moment = _moment.add(1, 'second');
-          console.log(ev);
-          return render(_moment);
+          var interval = setInterval(function() {
+            if (_aux <= 25) {
+              _moment = _moment.add(1, 'second');
+              render();
+              ++_aux;
+            } else {
+              _moment = _moment.add(10, 'second');
+              render();
+            }
+          }, 50);
+          this.addEventListener('mouseup', function() {
+            clearInterval(interval);
+            _aux = 0;
+          }, false);
         };
 
         var subtractHour = function() {
@@ -147,9 +158,7 @@
 
         document.querySelector('#add-hour').addEventListener('click', addHour, false);
         document.querySelector('#add-minute').addEventListener('click', addMinute, false);
-        document.querySelector('#add-second').addEventListener('mousedown', addSecond(ev), false);
-        // http://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
-        // http://stackoverflow.com/questions/12024483/how-to-pass-parameter-to-function-using-in-addeventlistener
+        document.querySelector('#add-second').addEventListener('mousedown', addSecond, false);
 
         document.querySelector('#subtract-hour').addEventListener('click', subtractHour, false);
         document.querySelector('#subtract-minute').addEventListener('click', subtractMinute, false);
