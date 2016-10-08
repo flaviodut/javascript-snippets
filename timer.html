@@ -96,49 +96,26 @@
         var _moment = moment().hours(0).minutes(0).seconds(0);
         var _aux = 0;
 
-        var addHour = function() {
-          if(_moment.hours() === 23) return;
-          _moment = _moment.add(1, 'hour');
-          return render(_moment);
-        };
-
-        var addMinute = function() {
-          _moment = _moment.add(1, 'minute');
-          return render(_moment);
-        };
-
-        var addSecond = function(ev) {
+        // if(_moment.hours() === 23) return;
+        
+        var adding = function(event, label) {
           var interval = setInterval(function() {
             if (_aux <= 25) {
-              _moment = _moment.add(1, 'second');
+              _moment = _moment.add(1, label);
               render();
               ++_aux;
             } else {
-              _moment = _moment.add(10, 'second');
+              _moment = _moment.add(10, label);
               render();
+              event.target.addEventListener('mouseup', function() {
+                clearInterval(interval);
+                _aux = 0;
+              }, false);
             }
           }, 50);
-          this.addEventListener('mouseup', function() {
-            clearInterval(interval);
-            _aux = 0;
-          }, false);
         };
 
-        var subtractHour = function() {
-          if(_moment.hours() === 0) return;
-          _moment = _moment.subtract(1, 'hour');
-          return render(_moment);
-        };
-
-        var subtractMinute = function() {
-          _moment = _moment.subtract(1, 'minute');
-          return render(_moment);
-        };
-
-        var subtractSecond = function() {
-          _moment = _moment.subtract(1, 'second');
-          return render(_moment);
-        };
+        var subtract = function() {}
 
         var run = function() {
           var interval = setInterval(function() {
@@ -156,17 +133,27 @@
           _elSeconds.innerHTML = moment.seconds() < 10 ? '0' + moment.seconds() : moment.seconds();
         };
 
-        document.querySelector('#add-hour').addEventListener('click', addHour, false);
-        document.querySelector('#add-minute').addEventListener('click', addMinute, false);
-        document.querySelector('#add-second').addEventListener('mousedown', addSecond, false);
+        // Events
+        document.querySelector('#add-hour').addEventListener('mousedown', function(event) {
+          adding(event, 'hour');
+        }, false);
 
-        document.querySelector('#subtract-hour').addEventListener('click', subtractHour, false);
-        document.querySelector('#subtract-minute').addEventListener('click', subtractMinute, false);
-        document.querySelector('#subtract-second').addEventListener('mousedown', subtractSecond, false);
+        document.querySelector('#add-minute').addEventListener('mousedown', function(event) {
+          adding(event, 'minute');
+        }, false);
+
+        document.querySelector('#add-second').addEventListener('mousedown', function(event) {
+          adding(event, 'second');
+        }, false);
+
+        document.querySelector('#subtract-hour').addEventListener('mousedown', subtract, false);
+        document.querySelector('#subtract-minute').addEventListener('mousedown', subtract, false);
+        document.querySelector('#subtract-second').addEventListener('mousedown', subtract, false);
         
         document.querySelector('#run-it').addEventListener('click', run, false);
 
         return {
+          // Revealed
           // render: render
         };
       })();
