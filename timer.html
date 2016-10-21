@@ -89,55 +89,138 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
     <script>
       // Countdown
-      var time = (function() {
-        var _elHours = document.querySelector('.timer__moment-piece-hours');
-        var _elMinutes = document.querySelector('.timer__moment-piece-minutes');
-        var _elSeconds = document.querySelector('.timer__moment-piece-seconds');
-        var _moment = moment().hours(0).minutes(0).seconds(0);
-        var _aux = 0;
+      let time = (function() {
+        let _elHours = document.querySelector('.timer__moment-piece-hours');
+        let _elMinutes = document.querySelector('.timer__moment-piece-minutes');
+        let _elSeconds = document.querySelector('.timer__moment-piece-seconds');
+        let _moment = moment().hours(0).minutes(0).seconds(0);
+        let _aux = 0;
 
-        var addHour = function() {
+        
+        let addHour = function() {
           if(_moment.hours() === 23) return;
           _moment = _moment.add(1, 'hour');
-          return render(_moment);
-        };
+          render();
 
-        var addMinute = function() {
-          _moment = _moment.add(1, 'minute');
-          return render(_moment);
-        };
+          setTimeout(function() {
+            let interval = setInterval(function() {
+              if(_moment.hours() === 23) return;
+              _moment = _moment.add(1, 'hour');
+              render();
+            }, 100);
 
-        var addSecond = function(ev) {
-          _moment = _moment.add(1, 'second');
-          console.log(ev);
-          return render(_moment);
-        };
+            this.addEventListener('mouseup', function() {
+              clearInterval(interval);
+            });
+          }, 500);
+        }
 
-        var subtractHour = function() {
+        let subtractHour = function() {
           if(_moment.hours() === 0) return;
           _moment = _moment.subtract(1, 'hour');
-          return render(_moment);
-        };
+          render();
+          
+          setTimeout(function() {
+            let interval = setInterval(function() {
+              if(_moment.hours() === 0) return;
+              _moment = _moment.subtract(1, 'hour');
+              render();
+            }, 100);
 
-        var subtractMinute = function() {
+            this.addEventListener('mouseup', function() {
+              clearInterval(interval);
+            });
+          }, 500);
+        }
+
+        let addMinute = function() {
+          if(_moment.hours() === 23 && _moment.minute() === 59) return;
+          _moment = _moment.add(1, 'minute');
+          render();
+
+          setTimeout(function() {
+            let interval = setInterval(function() {
+              if(_moment.hours() === 23 && _moment.minute() === 59) return;
+              _moment = _moment.add(1, 'minute');
+              render();
+            }, 55);
+
+            this.addEventListener('mouseup', function() {
+              clearInterval(interval);
+            });
+          }, 500);
+        }
+
+        let subtractMinute = function() {
+          if(_moment.hours() === 0 && _moment.minute() === 0) return;
           _moment = _moment.subtract(1, 'minute');
-          return render(_moment);
-        };
+          render();
 
-        var subtractSecond = function() {
-          _moment = _moment.subtract(1, 'second');
-          return render(_moment);
-        };
+          setTimeout(function() {
+            let interval = setInterval(function() {
+              if(_moment.hours() === 0 && _moment.minute() === 0) return;
+              _moment = _moment.subtract(1, 'minute');
+              render();
+            }, 55);
 
-        var run = function() {
-          var interval = setInterval(function() {
+            this.addEventListener('mouseup', function() {
+              clearInterval(interval);
+            });
+          }, 500);
+        }
+
+        let addSecond = function() {
+          if(_moment.minute() === 59 && _moment.second() === 59) return;
+          _moment = _moment.add(1, 'second');
+          render();
+
+          setTimeout(function() {
+            let interval = setInterval(function() {
+              if(_moment.minute() === 59 && _moment.second() === 59) return;
+              _moment = _moment.add(1, 'second');
+              render();
+            }, 10);
+
+            this.addEventListener('mouseup', function() {
+              clearInterval(interval);
+            });
+          }, 500);
+        }
+
+        let subtractSecond = function() {
+          if(_moment.minute() === 59 && _moment.second() === 59) return;
+          _moment = _moment.add(1, 'second');
+          render();
+
+          setTimeout(function() {
+            let interval = setInterval(function() {
+              if(_moment.minute() === 59 && _moment.second() === 59) return;
+              _moment = _moment.add(1, 'second');
+              render();
+            }, 10);
+
+            this.addEventListener('mouseup', function() {
+              clearInterval(interval);
+            });
+          }, 500);
+        }
+
+        let run = function() {
+          let momentZero = _moment.hours() === 0 && _moment.minutes() === 0 && _moment.seconds() === 0;
+          let running = false;
+          console.log(momentZero, running);
+          if(momentZero && !running) return;
+          
+          let interval = setInterval(function() {
+            running = true;
             _moment = _moment.subtract(1, 'second');
             render();
-            if(_moment.hours() === 0 && _moment.minutes() === 0 && _moment.seconds() === 0) return clearInterval(interval);
-          }, 10);
+            if(momentZero) return clearInterval(interval);
+          }, 1000);
+
         };
 
-        var render = function(moment) {
+        let render = function(moment) {
           if(!moment) moment = _moment;
 
           _elHours.innerHTML = moment.hours() < 10 ? '0' + moment.hours() : moment.hours();
@@ -145,19 +228,19 @@
           _elSeconds.innerHTML = moment.seconds() < 10 ? '0' + moment.seconds() : moment.seconds();
         };
 
-        document.querySelector('#add-hour').addEventListener('click', addHour, false);
-        document.querySelector('#add-minute').addEventListener('click', addMinute, false);
-        document.querySelector('#add-second').addEventListener('mousedown', addSecond(ev), false);
-        // http://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
-        // http://stackoverflow.com/questions/12024483/how-to-pass-parameter-to-function-using-in-addeventlistener
+        // Events
+        document.querySelector('#add-hour').addEventListener('mousedown', addHour, false);
+        document.querySelector('#add-minute').addEventListener('mousedown', addMinute, false);
+        document.querySelector('#add-second').addEventListener('mousedown', addSecond, false);
 
-        document.querySelector('#subtract-hour').addEventListener('click', subtractHour, false);
-        document.querySelector('#subtract-minute').addEventListener('click', subtractMinute, false);
+        document.querySelector('#subtract-hour').addEventListener('mousedown', subtractHour, false);
+        document.querySelector('#subtract-minute').addEventListener('mousedown', subtractMinute, false);
         document.querySelector('#subtract-second').addEventListener('mousedown', subtractSecond, false);
         
         document.querySelector('#run-it').addEventListener('click', run, false);
 
         return {
+          // Revealed
           // render: render
         };
       })();
