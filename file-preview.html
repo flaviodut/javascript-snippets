@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>File Preview</title>
+    <style>
+        input {
+            display: block;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<input id="fieldFile" type="file" name="">
+<img id="previewImage">
+
+<script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+          var previewImage = document.querySelector('#previewImage');
+          previewImage.setAttribute('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    var fieldFile = document.querySelector('#fieldFile');
+
+    fieldFile.addEventListener('change', function() {
+        readURL(this);
+    }, false);
+</script>
+</body>
+</html>
