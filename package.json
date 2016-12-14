@@ -1,0 +1,20 @@
+{
+  "name": "javascript-snippets",
+  "version": "0.0.1",
+  "description": "A collection of JavaScript Snippets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://flaviodut@bitbucket.org/flaviodut/simple-programs.git"
+  },
+  "keywords": [
+    "javascript",
+    "snippets"
+  ],
+  "author": "Flávio Dutra",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/flaviodut/simple-programs#readme"
+}
