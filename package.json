@@ -16,5 +16,8 @@
   ],
   "author": "Flávio Dutra",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/flaviodut/simple-programs#readme"
+  "homepage": "https://bitbucket.org/flaviodut/simple-programs#readme",
+  "devDependencies": {
+    "eslint": "^3.12.2"
+  }
 }
