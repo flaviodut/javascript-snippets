@@ -18,6 +18,8 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/flaviodut/simple-programs#readme",
   "devDependencies": {
-    "eslint": "^3.12.2"
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0"
   }
 }
