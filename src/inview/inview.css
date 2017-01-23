@@ -11,11 +11,14 @@ body {
 }
 
 body {
+  position: relative;
   font: 400 16px/1.4 Arial, sans-serif;
   color: #444;
+  height: 3000px;
 }
 
-img {
-  margin-top: 1000px;
-  margin-bottom: 1000px;
+#kitten {
+  position: absolute;
+  top: 1000px;
+  left: 50px;
 }

@@ -19,24 +19,26 @@
 
   function onScroll() {
     const windowInnerHeight = this.innerHeight;
-    const windowScrollY = this.scrollY;
+    const windowScrollY = this.scrollY - 20;
 
     // TODO: verificar quando a imagem saí da view
-    const visibleOnTop = kittenInfo.top < windowInnerHeight + windowScrollY;
-    const visibleOnBottom = kittenInfo.bottom() < windowInnerHeight + windowScrollY;
-    const visibleFull = visibleOnTop && visibleOnBottom;
+    const visibleTop = kittenInfo.top < windowInnerHeight + windowScrollY
+                    && kittenInfo.top > windowScrollY;
+    const visibleBottom = kittenInfo.bottom() < windowInnerHeight + windowScrollY
+                       && kittenInfo.bottom() > windowScrollY;
+    const visibleFull = visibleTop && visibleBottom;
 
     // console.log(windowInnerHeight, windowScrollY);
-    console.info(visibleFull, visibleOnBottom, visibleFull);
+    // console.info(visibleTop, visibleBottom, visibleFull);
 
     if (visibleFull) {
       console.log('full');
     } else {
-      if (visibleOnTop) {
+      if (visibleTop) {
         console.log('top');
       }
 
-      if (visibleOnBottom) {
+      if (visibleBottom) {
         console.log('bottom');
       }
     }
