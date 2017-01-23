@@ -1,0 +1,40 @@
+html, body, div {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  position: relative;
+}
+
+img {
+  position: absolute;
+  top: 10px;
+  border: 1px solid orange;
+  cursor: move;
+}
+
+img:nth-child(1) {
+  left: 5%;
+}
+
+img:nth-child(2) {
+  left: 15%;
+}
+
+img:nth-child(3) {
+  left: 25%;
+}
+
+img:nth-child(4) {
+  left: 35%;
+}
+
+img:nth-child(5) {
+  left: 45%;
+}
