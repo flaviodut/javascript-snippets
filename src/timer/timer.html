@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timer</title>
+    <link href="http://fonts.googleapis.com/css?family=Nova+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="timer.css">
+  </head>
+  <body>
+
+    <aside class="timer">
+      <div class="timer__moment">
+        <span class="timer__moment-piece timer__moment-piece-hours">00</span><span class="timer__moment-piece timer__moment-piece-minutes">00</span><span class="timer__moment-piece timer__moment-piece-seconds">00</span>
+      </div>
+      <div class="timer__controls">
+        <button id="add-hour" class="timer__controls-button">+1 hour</button>
+        <button id="add-minute" class="timer__controls-button">+1 minute</button>
+        <button id="add-second" class="timer__controls-button">+1 second</button><br>
+        <button id="subtract-hour" class="timer__controls-button">-1 hour</button>
+        <button id="subtract-minute" class="timer__controls-button">-1 minute</button>
+        <button id="subtract-second" class="timer__controls-button">-1 second</button><br>
+        <button id="run-it" class="timer__controls-button">RUN IT!</button>
+      </div>
+    </aside>
+
+    <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/locale/pt-br.js"></script> -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="timer.js"></script>
+  </body>
+</html>

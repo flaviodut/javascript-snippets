@@ -1,0 +1,59 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer {
+  text-align: center;
+}
+
+.timer__moment {
+  margin-bottom: 1.5rem;
+}
+
+.timer__moment-piece {
+  display: inline-block;
+  min-width: 4.5rem;
+  font: 36pt/1.5 'Nova Mono', monospace;
+  color: #666;
+  cursor: default;
+}
+
+.timer__moment-piece-hours:after {
+  content: 'h';
+}
+
+.timer__moment-piece-minutes:after {
+  content: 'm';
+}
+
+.timer__moment-piece-seconds:after {
+  content: 's';
+}
+
+.timer__controls {}
+
+.timer__controls-button {
+  margin-bottom: .75rem;
+  padding: 0.5rem 1rem;
+  font: 700 .75rem/1 'Nova Mono', monospace;
+  color: #aaa;
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  transition: all 150ms;
+  cursor: pointer;
+}
+
+.timer__controls-button:hover,
+.timer__controls-button:focus {
+  background-color: #eee;
+}
