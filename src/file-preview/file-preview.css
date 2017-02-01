@@ -1,0 +1,18 @@
+input {
+  display: block;
+  margin-bottom: 15px;
+}
+
+img[src=""] {
+  display: none;
+}
+
+img {
+  max-width: 150px;
+  height: auto;
+  padding: 5px;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
