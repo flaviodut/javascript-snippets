@@ -26,9 +26,9 @@
     const windowScrollY = this.scrollY - 20;
 
     const visibleTop = kittenInfo.top < windowInnerHeight + windowScrollY
-                    && kittenInfo.top > windowScrollY;
+                       && kittenInfo.top > windowScrollY;
     const visibleBottom = kittenInfo.bottom() < windowInnerHeight + windowScrollY
-                       && kittenInfo.bottom() > windowScrollY;
+                          && kittenInfo.bottom() > windowScrollY;
     const visibleFull = visibleTop && visibleBottom;
 
     // console.log(windowInnerHeight, windowScrollY);
