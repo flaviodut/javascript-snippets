@@ -10,20 +10,20 @@ function appendElement(parent, element) {
 }
 
 fetch(url)
-  .then(function (data) {
+  .then((data) => {
     return data.json();
   })
-  .then(function (data) {
+  .then((data) => {
     const women = data.results;
 
-    women.map(function (woman) {
+    women.map((woman) => {
       console.log(woman);
 
-      const wrap = createElement('div'),
-            photo = createElement('img'),
-            name = createElement('span'),
-            phone = createElement('span'),
-            email = createElement('span');
+      const wrap = createElement('div');
+      const photo = createElement('img');
+      const name = createElement('span');
+      const phone = createElement('span');
+      const email = createElement('span');
 
       wrap.className = 'woman';
 
@@ -46,6 +46,6 @@ fetch(url)
       appendElement(container, wrap);
     });
   })
-  .catch(function (error) {
+  .catch((error) => {
     console.error(error);
-  })
+  });
