@@ -1,41 +1,37 @@
-// Calcula o valor do desconto aplicado
+// Calcula a diferença percentual entre dois valores númericos ou valores monetários em reais
+function appliedDiscount(fromPrice, forPrice) {
+    let discount;
+    
+    fromPrice = fromPrice.toString().replace(/([A-Z$. ])/g,'').replace(',','.');
+    forPrice = forPrice.toString().replace(/([A-Z$. ])/g,'').replace(',','.');
 
-var fromPrice = 'R$ 2.999,90';
-var forPrice = 'R$ 1.999,90';
-var discount;
+    if (Number(fromPrice) < Number(forPrice)) return false;
 
-fromPrice = fromPrice.replace('R$ ','').replace('.','').replace(',','.');
-forPrice = forPrice.replace('R$ ','').replace('.','').replace(',','.');
+    discount = 100 - ((forPrice * 100) / fromPrice);
+    discount = discount.toFixed(2).toString().replace('.00','').replace('.',',');
 
-fromPrice = parseFloat(fromPrice);
-forPrice =  parseFloat(forPrice);
-discount = (forPrice*100)/fromPrice;
+    return discount+'% de desconto';
+}
 
-fromPrice = fromPrice.toFixed(2).toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-forPrice = forPrice.toFixed(2).toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-discount = discount.toFixed(2).toString().replace('.',',');
-
-console.log('de: R$ '+fromPrice);
-console.log('por: R$ '+forPrice);
-console.log(discount+'%');
-
+let value = appliedDiscount('R$ 1.000,00', 'R$ 500,00');
+console.log(value);
 
 
 // Calcula o preço com adição de desconto
 
-var price = 'R$ 2.099,90';
-var discountPerc = 15;
-var discountPrice;
-var newPrice;
+// var price = 'R$ 2.099,90';
+// var discountPerc = 15;
+// var discountPrice;
+// var newPrice;
 
-price = price.replace('R$ ','').replace('.','').replace(',','.');
-price = parseFloat(price);
+// price = price.replace('R$ ','').replace('.','').replace(',','.');
+// price = parseFloat(price);
 
-discountPrice = ( price*discountPerc ) / 100;
-newPrice = price-discountPrice;
+// discountPrice = ( price*discountPerc ) / 100;
+// newPrice = price-discountPrice;
 
-price = price.toFixed(2).toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-newPrice = newPrice.toFixed(2).toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+// price = price.toFixed(2).toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+// newPrice = newPrice.toFixed(2).toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-console.log('R$ ' + price);
-console.log('R$ ' + newPrice );
+// console.log('R$ ' + price);
+// console.log('R$ ' + newPrice );
