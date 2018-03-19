@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "checkJs": false,
+    "target": "es5",
+    "removeComments": true,
+    "sourceMap": true,
+    "locale": "pt-BR"
+  }
+}
