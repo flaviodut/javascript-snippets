@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://flaviodut@bitbucket.org/flaviodut/simple-programs.git"
+    "url": "git+https://flaviodut@bitbucket.org/manguetown/javascript-snippets.git"
   },
   "keywords": [
     "javascript",
@@ -16,7 +16,7 @@
   ],
   "author": "Flávio Dutra",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/flaviodut/simple-programs#readme",
+  "homepage": "https://bitbucket.org/manguetown/javascript-snippets/src/master/README.md",
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "eslint": "^3.13.1",
